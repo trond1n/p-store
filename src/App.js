@@ -2,8 +2,16 @@ import { Categories } from './components/Categories';
 import { Header } from './components/Header';
 import { PizzaBlock } from './components/PizzaBlock';
 import { Sort } from './components/Sort';
-import pizzas from './assets/pizzas.json';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
 function App() {
+  const [pizzas, setPizzas] = useState([]);
+  useEffect(() => {
+    axios.get('https://6449408ab88a78a8f0024387.mockapi.io/items').then((res) => {
+      setPizzas(res.data);
+    });
+  }, []);
   return (
     <div className="App">
       <div className="wrapper">
@@ -18,7 +26,7 @@ function App() {
             <div className="content__items">
               {/* <PizzaBlock title="пицца" price="300р" /> */}
               {pizzas.map((pizza, index) => (
-                <PizzaBlock {...pizza} />
+                <PizzaBlock key={index} {...pizza} />
               ))}
             </div>
           </div>
