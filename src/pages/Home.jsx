@@ -25,7 +25,7 @@ export const Home = () => {
       <div className="content__items">
         {isLoaded
           ? pizzas.map((pizza, index) => <PizzaBlock key={index} {...pizza} />)
-          : [...new Array(6)].map(() => <Skeleton />)}
+          : [...new Array(6)].map((arr, index) => <Skeleton key={index} />)}
       </div>
     </>
   );
