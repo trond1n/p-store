@@ -8,18 +8,34 @@ import Skeleton from '../components/Skeleton';
 export const Home = () => {
   const [pizzas, setPizzas] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [categoryId, setCategoryId] = React.useState(0);
+  const [sortType, setSortType] = React.useState({
+    name: 'популярности ↑',
+    sortProperty: 'rating',
+  });
 
   useEffect(() => {
-    axios.get('https://6449408ab88a78a8f0024387.mockapi.io/items').then((res) => {
-      setPizzas(res.data);
-      setIsLoaded(true);
-    });
-  }, []);
+    setIsLoaded(false);
+    const category = categoryId > 0 ? `category=${categoryId}` : '';
+    const sortBy = sortType.sortProperty.replace('-', '');
+    const order = sortType.sortProperty.includes('-') ? 'asc' : 'desc';
+    axios
+      .get(
+        `https://6449408ab88a78a8f0024387.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}`,
+      )
+      .then((res) => {
+        setPizzas(res.data);
+        setIsLoaded(true);
+      });
+    window.scrollTo(0, 0);
+    console.log(sortBy);
+  }, [categoryId, sortType]);
+
   return (
     <>
       <div className="content__top">
-        <Categories />
-        <Sort />
+        <Categories onClickCategory={(i) => setCategoryId(i)} value={categoryId} />
+        <Sort onClickSort={(i) => setSortType(i)} value={sortType} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">

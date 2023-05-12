@@ -5,7 +5,7 @@ const Cart = () => {
   return (
     <div className="pizza-not-found">
       <h1>Таак...</h1>
-      <p>Кажется,в вашей корзине пусто</p>
+      <p>Кажется, в вашей корзине пусто</p>
       <span role="img" aria-label="Shopping Cart">
         🛒
       </span>
