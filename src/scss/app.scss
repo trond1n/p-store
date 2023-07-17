@@ -1,8 +1,15 @@
-@import './variables';
-@import './libs/normalize';
+@import "./variables";
+@import "./libs/normalize";
 
-@import './components/all';
-
+@import "./components/all";
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 body {
   background-color: $background;
 }
@@ -384,5 +391,18 @@ body {
       font-weight: 600;
       font-size: 18px;
     }
+  }
+}
+.full {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    animation: spin 60s linear infinite;
+  max-width: 300px;
+
+  }
+  h2{
+    margin-top: 100px;
   }
 }
