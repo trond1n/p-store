@@ -71,7 +71,7 @@ const Home = () => {
     if (!window.location.search) {
       fetchPizzas();
     }
-  }, [categoryId, sort.sortProperty, searchValue, currentPage]);
+  }, [categoryId, sort.sortProperty, searchValue, currentPage, navigate]);
 
   React.useEffect(() => {
     getPizzas();
@@ -91,9 +91,7 @@ const Home = () => {
   }, []);
 
   const pizzas = items.map((obj) => (
-    // <Link key={obj.id} to={`/pizza/${obj.id}`}>
-      <PizzaBlock {...obj} />
-    
+      <PizzaBlock key={obj.id} {...obj} path={`/pizza/${obj.id}`}/>
   ));
   const skeletons = [...new Array(6)].map((_, index) => <Skeleton key={index} />);
 
