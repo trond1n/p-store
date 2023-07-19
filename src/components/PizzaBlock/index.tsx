@@ -30,8 +30,7 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({
 
   const addedCount = cartItem ? cartItem.count : 0;
 
-  const onClickAdd = (event: any) => {
-    //ТИПИЗИРОВАТЬ!
+  const onClickAdd = (event: React.MouseEvent<HTMLButtonElement>) => {
 
     event.stopPropagation();
     const item = {
