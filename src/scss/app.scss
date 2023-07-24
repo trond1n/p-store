@@ -238,6 +238,24 @@ body {
             display: none;
           }
         }
+
+        &-disabled {
+          cursor: not-allowed;
+          opacity: 0.2;
+          border-color: #8d8d8d;
+          &:active {
+            transform: none;
+          }
+          &:hover {
+            background-color: transparent;
+            svg path {
+              fill: #8d8d8d;
+            }
+          }
+          svg path {
+            fill: #8d8d8d;
+          }
+        }
       }
 
       b {
@@ -399,10 +417,9 @@ body {
   align-items: center;
   img {
     animation: spin 60s linear infinite;
-  max-width: 300px;
-
+    max-width: 300px;
   }
-  h2{
+  h2 {
     margin-top: 100px;
   }
 }

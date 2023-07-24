@@ -1,7 +1,7 @@
 import React from "react";
 import qs from "qs";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
@@ -24,7 +24,7 @@ import {
 import { useAppDispatch } from "../redux/store";
 
 const Home: React.FC = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const isMounted = React.useRef(false);
 
@@ -32,9 +32,13 @@ const Home: React.FC = () => {
   const { categoryId, sort, currentPage, searchValue } =
     useSelector(selectFilter);
 
-  const onChangeCategory = (id: number) => {
-    dispatch(setCategoryId(id));
-  };
+  const onChangeCategory = React.useCallback(
+    (id: number) => {
+      dispatch(setCategoryId(id));
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
 
   const onChangePage = (number: number) => {
     dispatch(setCurrentPage(number));
@@ -122,7 +126,7 @@ const Home: React.FC = () => {
     <div className="container">
       <div className="content__top">
         <Categories value={categoryId} onChangeCategory={onChangeCategory} />
-        <Sort />
+        <Sort value={sort}/>
       </div>
       <h2 className="content__title">Все пиццы</h2>
       {status === "error" ? (
@@ -138,7 +142,6 @@ const Home: React.FC = () => {
           {status === "loading" ? skeletons : pizzas}
         </div>
       )}
-
       <Pagination currentPage={currentPage} onChangePage={onChangePage} />
     </div>
   );
