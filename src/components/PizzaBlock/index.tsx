@@ -53,9 +53,10 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({
       <div className="pizza-block">
         <Link to={path}>
           <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+
+          <h4 className="pizza-block__title">{title}</h4>
         </Link>
 
-        <h4 className="pizza-block__title">{title}</h4>
         <div className="pizza-block__selector">
           <ul>
             {types.map((typeId) => (
