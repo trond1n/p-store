@@ -3,11 +3,7 @@ import qs from "qs";
 import { useSelector } from "react-redux";
 // import { useNavigate } from "react-router-dom";
 
-import Categories from "../components/Categories";
-import Sort from "../components/Sort";
-import PizzaBlock from "../components/PizzaBlock";
-import Skeleton from "../components/PizzaBlock/Skeleton";
-import Pagination from "../components/Pagination";
+
 import { sortList } from "../components/Sort";
 
 import { useAppDispatch } from "../redux/store";
@@ -20,6 +16,7 @@ import {
 import { selectPizzaData } from "../redux/slices/pizza/selectors";
 import { fetchPizzas } from "../redux/slices/pizza/slice";
 import { SearchPizzaParams } from "../redux/slices/pizza/types";
+import { Categories, Pagination, PizzaBlock, Skeleton, Sort } from "../components";
 
 const Home: React.FC = () => {
   // const navigate = useNavigate();
